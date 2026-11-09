@@ -1,0 +1,41 @@
+<div class="head">
+    <div class="inner"> <button>All</button>
+        <button><a [routerLink]="" [routerLinkActive]="['active']">Active</a></button>
+        <button><a [routerLinkActive]="['active']">Inactive</a></button>
+        <button><a [routerLinkActive]="['active']">Out of stock</a></button>
+    </div>
+    <div class="addp">
+        <button class="btn btn-success" (click)="addProducts()">
+            <i class="fas fa-plus-circle"></i> Add Product
+        </button>
+    </div>
+</div>
+
+<div class="main">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Products</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (p of items; track $index) {
+                <tr>
+                    <td><div class="box"><img [src]="'data:image/jpeg;base64,' + p.image" width="200" height="150" alt="{{ p.name }}"> <h4>{{p.name}}</h4> </div></td>
+                    <td>{{p.categoryId | category}}</td>
+                    <td>{{p.unitPrice}}</td>
+                    <td>{{p.unitsInStock}}</td>
+                    <td>{{p.organic ? "Active":"InActive"}}</td> <td class="actions"> <i class="fa-solid fa-eye view"></i> <i (click)="edit(p)" class="fa-solid fa-pen-to-square edit"></i> <i class="fa-solid fa-trash-can delete"></i> </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

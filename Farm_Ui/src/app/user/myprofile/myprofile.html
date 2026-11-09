@@ -1,0 +1,208 @@
+<main>
+
+    <div class="col-1">
+        <i class="fa-solid fa-user"></i>
+        <div>
+            <h2>My profile</h2>
+            <p>View and manage your information</p>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="out">
+            <div class="in">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+
+        <div class="out-1">
+            <i class="fa-solid fa-camera-retro"></i>
+        </div>
+
+        <div class="info">
+            <p>Ganesh Sandela</p>
+            <div class="icon">
+                <div> <i class="fa-solid fa-envelope"></i> <span>sandelaganesg57@gmail.com</span> </div>
+                <div> <i class="fa-solid fa-phone"></i> <span>+91 9581288259</span> </div>
+                <div> <i class="fa-solid fa-location-dot"></i> <span>Hyderabad, Telangana, India </span></div>
+
+            </div>
+        </div>
+
+        <div class="col3">
+            <div class="title">
+                <p>Account Overview</p>
+
+            </div>
+            <div class="an-1">
+                <div> <i class="fa-solid fa-user"></i> <span>Full Name</span></div>
+                <p>Ganesh Sandela</p>
+            </div>
+
+            <div class="an-1">
+                <div> <i class="fa-solid fa-envelope"></i> <span>Email</span></div>
+                <p>sandelaganesg57@gamail.com</p>
+            </div>
+
+            <div class="an-1">
+                <div> <i class="fa-solid fa-phone"></i> <span>Phone</span></div>
+                <p>+91 9581288259</p>
+            </div>
+
+            <div class="an-1">
+                <div> <i class="fa-solid fa-location-dot"></i> <span>Location</span></div>
+                <p>Hyderabad, Telangana, India</p>
+            </div>
+
+        </div>
+
+
+        <div class="col4">
+            <div class="pic">
+                <i class="fa-solid fa-image"></i>
+                <div class="all-in">
+                    <p>Change Profile Picture</p>
+                    <p>Upload a new profile picture (JPG,PNG-MAX 2MB).</p>
+                </div>
+            </div>
+            <div class="file">
+              
+<div class="file-upload">
+  <input
+    type="file"
+    id="fileInput"
+    (change)="onFileSelected($event)"
+    hidden
+  />
+
+  <label for="fileInput" class="file-label">
+    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+    <span>{{ fileName || 'Upload your file' }}</span>
+
+    <i class="fa-solid fa-paperclip"></i>
+  </label>
+</div>
+ <button> <i class="fa-solid fa-file"></i> Browse</button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="edit">
+        <div class="outer-1">
+            <i class="fa-solid fa-pen"></i>
+            <div class="slide"></div>
+        </div>
+        <div class="dir-1">
+        <p>Edit Profile</p>
+        <p>Update your personal information</p>
+    </div>
+        <div class="form-data">
+            <form [formGroup]="profileInfo" (submit)="onSubmit()">
+                <div class="input-box">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" formControlName="name">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['name'].errors?.['required'] && profileInfo.controls['name'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" formControlName="email">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['email'].errors?.['required'] && profileInfo.controls['email'].touched">
+                            Field is Required</p>
+                        <p *ngIf="profileInfo.controls['email'].invalid && profileInfo.controls['email'].touched"></p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="ph">Phone Number</label>
+                    <input type="tel" id="ph" formControlName="phno">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['phno'].errors?.['required'] && profileInfo.controls['phno'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="alt">Alternate Phone(Optional)</label>
+                    <input type="tel" id="alt" formControlName="altph">
+                </div>
+
+                <div class="input-box">
+                    <label for="village">Village</label>
+                    <input type="text" id="village" formControlName="village">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['village'].errors?.['required'] && profileInfo.controls['village'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="citty">City</label>
+                    <input type="text" id="city" formControlName="city">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['city'].errors?.['required'] && profileInfo.controls['city'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+                <div class="input-box">
+                    <label for="dist">District</label>
+                    <input type="text" id="dist" formControlName="district">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['district'].errors?.['required'] && profileInfo.controls['district'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="st">State</label>
+                    <input type="text" id="st" formControlName="state">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['state'].errors?.['required'] && profileInfo.controls['state'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="pin">Pincode</label>
+                    <input type="number" id="pin" formControlName="pincode" maxlength="6">
+                    <div class="error">
+                        <p
+                            *ngIf="profileInfo.controls['pincode'].errors?.['required'] && profileInfo.controls['pincode'].touched">
+                            Field is Required</p>
+                    </div>
+                </div>
+
+                <div class="btn">
+                    <button  class="save-btn">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        Save Changes
+                    </button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    
+</main>

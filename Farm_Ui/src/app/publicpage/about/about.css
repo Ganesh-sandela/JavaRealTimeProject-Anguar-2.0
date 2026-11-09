@@ -1,0 +1,36 @@
+.title{
+    height: 170px;
+    width: 700px;
+    background-color: rgb(131, 185, 216);
+    margin-top: -25px;
+}
+.title h1{
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    position: relative;
+    top: 55px;
+    left: 130px;
+}
+.info{
+    width: 400px;
+    font-size: 20px;
+    position: relative;
+    left: 130px;
+    top: -20px;
+}
+.color{
+    height: 320px;
+    width: 400px;
+     background-color: rgb(131, 185, 216);
+   position: absolute;
+   top: 270px;
+   left: 730px;
+}
+.image img{
+    height: 300px;
+    width: 400px;
+    position: absolute;
+    left: 600px;
+    top: 280px;
+}

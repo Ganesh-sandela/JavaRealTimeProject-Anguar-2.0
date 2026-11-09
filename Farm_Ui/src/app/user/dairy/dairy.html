@@ -1,0 +1,48 @@
+<p>dairy works!</p>
+@if (errorPage) {
+
+  <app-errorpageload
+    [code]="statusCode">
+  </app-errorpageload>
+
+}
+@else {
+
+<div class="items-all">
+    @for (item of vegetables; track $index) {
+
+    <div class="box">
+
+    <div class="small-col">
+      <button type="button" (click)="addToWishList(item)">
+        <i class="fa-heart" [class.fa-solid]="isWishlisted(item)" [class.fa-regular]="!isWishlisted(item)"
+          [class.active]="isWishlisted(item)">
+        </i>
+      </button>
+    </div>
+
+     <img
+  [src]="'data:image/webp;base64,' + item.image"
+  alt="vegi">
+<div class="names">
+  
+      <p>{{ item.name }}</p> 
+
+      <p>{{ item.unitsInStock }} kg</p>
+
+      <p>₹{{ item.unitPrice }}</p>
+</div>
+
+      <div class="btn">
+        <button  (click)="addToCart(item)">
+        <i class="fa-solid fa-cart-shopping shop"></i>
+        Add To Cart
+      </button>
+
+      </div>
+    </div>
+
+  }
+
+</div>
+}

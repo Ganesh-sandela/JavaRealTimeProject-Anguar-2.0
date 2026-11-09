@@ -1,0 +1,669 @@
+<main class="checkout-page">
+
+  <!-- Checkout heading -->
+  <div class="info">
+    <div class="cart-icon">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+    <div>
+      <h2>Checkout</h2>
+      <p>Complete your order by providing the delivery details and payment method.</p>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="stepp">
+    <div class="line">
+      <div class="progress" [style.width.%]="(currentStep - 1) * 100 / 3">
+      </div>
+
+      <div class="step adr" [class.active]="currentStep >= 1">
+        <p>1</p>
+        <label>Delivery Address</label>
+      </div>
+
+      <div class="step pay" [class.active]="currentStep >= 2">
+        <p>2</p>
+        <label>Payment Method</label>
+      </div>
+
+      <div class="step rev" [class.active]="currentStep >= 3">
+        <p>3</p>
+        <label>Review Order</label>
+      </div>
+
+      <div class="step con" [class.active]="currentStep >= 4">
+        <p>4</p>
+        <label>Confirmation</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address section -->
+  @if (currentStep===1) {
+  <section class="address-card">
+
+    <div class="section-heading">
+      <div class="heading-icon">
+        <i class="fa-solid fa-location-dot"></i>
+      </div>
+      <h3>Delivery Address</h3>
+    </div>
+
+    <p class="section-description">
+      Select where you would like your fresh products delivered.
+    </p>
+
+    <!-- Saved addresses -->
+
+    <!-- Saved addresses -->
+    <form [formGroup]="radioselect" (ngSubmit)="radio()">
+
+      @for (item of address; track item.id) {
+      <div class="saved-address">
+
+        <div class="address-radio">
+          <input type="radio" formControlName="radioadr" [value]="item.id" [id]="'address-' + item.id" />
+        </div>
+
+        <label class="address-details" [for]="'address-' + item.id">
+          <h4>{{ name }}</h4>
+
+          <p>{{ item.houseno }}, {{ item.village }}</p>
+          <p>{{ item.city }}, {{ item.District }}</p>
+          <p>{{ item.state }} - {{ item.zipcode }}</p>
+
+          <p class="phone">
+            <i class="fa-solid fa-phone"></i>
+            {{ mobile }}
+          </p>
+        </label>
+
+        <div class="address-actions">
+          <button type="button" class="edit-btn" (click)="edit()">
+            <i class="fa-solid fa-pen"></i> Edit
+          </button>
+
+          <button type="button" class="delete-btn" (click)="Delete(item.id)">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </div>
+
+      </div>
+      }
+
+      <!-- <button id="btn" type="submit" (click)="nextStep()" class="continue-btn">
+    Proceed to Payment
+    <i class="fa-solid fa-arrow-right"></i>
+  </button> -->
+
+
+
+
+      <!-- Add address -->
+      <div [routerLink]="['/user/useraddaddress']" class="add-address">
+        <div class="add-icon">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+
+        <div class="add-text">
+          <h4>Add New Address</h4>
+          <p>Add another address for your deliveries.</p>
+        </div>
+
+        <button class="add-btn" [routerLink]="['/user/useraddaddress']">
+          <i class="fa-solid fa-plus"></i>
+          Add Address
+        </button>
+      </div>
+
+      <!-- Delivery instructions -->
+      <div class="instructions">
+        <label for="deliveryNotes">
+          <i class="fa-solid fa-clipboard-list"></i>
+          Delivery Instructions <span>(Optional)</span>
+        </label>
+
+        <textarea id="deliveryNotes" rows="3"
+          placeholder="Any special instructions? e.g. gate code, landmark, or alternate number">
+      </textarea>
+      </div>
+
+      <!-- Delivery information -->
+      <div class="delivery-note">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+          <h4>Fresh from the farm, delivered to your door!</h4>
+          <p>We will deliver your order safely to your doorstep.</p>
+        </div>
+      </div>
+
+      <!-- Footer actions -->
+      <div class="checkout-actions">
+        <button class="back-btn" routerLink="/user/cart">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Cart
+        </button>
+        @if (submitted && radioselect.get('radioadr')?.invalid) {
+        <div class="error">
+          <p>
+            Please select an address
+            <i class="fa-solid fa-circle-xmark"></i>
+          </p>
+        </div>
+        }
+
+        <button type="button" class="continue-btn" [disabled]="radioselect.get('radioadr')?.invalid" (click)="radio()">
+
+          Proceed to Payment
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </form>
+  </section>
+  }
+  @else if (currentStep === 2) {
+
+  <section class="payment-card">
+
+    <h2>Payment Method</h2>
+    <p class="payment-description">
+      Choose your preferred payment method.
+    </p>
+
+    <form [formGroup]="paymentForm">
+
+      <label class="payment-option" [class.selected]="paymentForm.get('method')?.value === 'COD'">
+        <span class="payment-icon cod">
+          <i class="fa-solid fa-money-bill-wave"></i>
+        </span>
+
+        <span class="payment-details">
+          <strong>Cash on Delivery</strong>
+          <small>Pay when you receive your order</small>
+        </span>
+
+        <input type="radio" formControlName="method" value="COD">
+      </label>
+
+      <label class="payment-option" [class.selected]="paymentForm.get('method')?.value === 'ONLINE'">
+        <span class="payment-icon online">
+          <i class="fa-solid fa-credit-card"></i>
+        </span>
+
+        <span class="payment-details">
+          <strong>UPI / Cards / Net Banking</strong>
+          <small>Pay securely online</small>
+        </span>
+
+        <input type="radio" formControlName="method" value="ONLINE">
+      </label>
+
+      <label class="payment-option" [class.selected]="paymentForm.get('method')?.value === 'WALLET'">
+        <span class="payment-icon wallet">
+          <i class="fa-solid fa-wallet"></i>
+        </span>
+
+        <span class="payment-details">
+          <strong>Wallets</strong>
+          <small>Pay using your preferred wallet (PhonePe, Paytm, etc.)</small>
+        </span>
+
+        <input type="radio" formControlName="method" value="WALLET">
+      </label>
+
+    </form>
+
+    <div class="security-note">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <strong>Your payment information is secure</strong>
+        <p>We use secure payment processing to protect your data.</p>
+      </div>
+    </div>
+
+    <div class="payment-actions">
+      <button class="back-btn" (click)="previousStep()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Address
+      </button>
+
+      <button class="continue-btn" (click)="continueToReview()">
+        Continue to Review
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+
+  </section>
+  }
+  @else if (currentStep===3) {
+
+  <section>
+    <div class="main-sec">
+      <div class="heading">
+        <div class="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>{{ cartItems.length }}</span>
+        </div>
+        <h3>Order Items( <span> {{ cartItems.length }}</span> )</h3>
+      </div>
+
+      <div class="nam names">
+        <p>Product</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Total</p>
+      </div>
+      @for (item of cartItems; track item.id) {
+      <div class="names">
+        <img [src]="item.image" [alt]="item.name" class="product-image" />
+
+        <div class="product-info">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+
+          <span class="organic-tag" *ngIf="item.organic">
+            Organic
+          </span>
+        </div>
+
+        <div class="price">
+          <strong>₹ {{ item.price.toFixed(2) }}</strong>
+          <small>{{ item.unit }}</small>
+        </div>
+
+        <div class="quantity">
+          {{ item.quantity }}
+        </div>
+
+        <div class="item-total">
+          <strong>
+            ₹ {{ (item.price * item.quantity).toFixed(2) }}
+          </strong>
+        </div>
+      </div>
+      }
+
+      <div class="review-container">
+
+        <!-- Delivery Address -->
+        <div class="review-card">
+          <div class="review-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+
+          <div class="review-details">
+            <h3>Delivery Address</h3>
+            <Strong>{{username}}</Strong>
+            <strong>{{ selectedAddress?.village }}</strong>
+            <p>{{ selectedAddress?.houseno }}, {{ selectedAddress?.residency }}</p>
+            <p>
+              {{ selectedAddress?.city }},
+              {{ selectedAddress?.state }} -
+              {{ selectedAddress?.zipcode }}
+            </p>
+          </div>
+
+          <button class="edit-btn" type="button" (click)="editAddress()">
+            <i class="fa-solid fa-pen"></i> Edit
+          </button>
+        </div>
+
+        <!-- Delivery Method -->
+        <div class="review-card">
+          <div class="review-icon">
+            <i class="fa-solid fa-truck"></i>
+          </div>
+
+          <div class="review-details">
+            <h3>Delivery Method</h3>
+            <p>{{ deliveryMethod }} - {{ deliveryTime }}</p>
+          </div>
+
+          <button class="edit-btn" type="button" (click)="editDelivery()">
+            <i class="fa-solid fa-pen"></i> Edit
+          </button>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="review-card">
+          <div class="review-icon">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+
+          <div class="review-details">
+            <h3>Payment Method</h3>
+            <p>{{ getPaymentMethodName() }}</p>
+          </div>
+
+          <button class="edit-btn" type="button" (click)="editPayment()">
+            <i class="fa-solid fa-pen"></i> Edit
+          </button>
+        </div>
+
+        <!-- Back button -->
+        <button class="back-btn" type="button" (click)="editPayment()">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Payment
+        </button>
+        <button></button>
+
+      </div>
+
+
+    </div>
+
+
+
+  </section>
+  }
+@if (currentStep === 4) {
+  <section class="order-success-page">
+
+    <!-- Animated success icon -->
+    <div class="success-animation">
+      <div class="success-circle">
+        <svg viewBox="0 0 52 52" class="checkmark">
+          <circle
+            class="check-circle"
+            cx="26"
+            cy="26"
+            r="24"
+            fill="none"
+          />
+
+          <path
+            class="check-path"
+            fill="none"
+            d="M14 27 L22 35 L39 17"
+          />
+        </svg>
+      </div>
+
+      <!-- Decorative particles -->
+      <span class="particle particle-1"></span>
+      <span class="particle particle-2"></span>
+      <span class="particle particle-3"></span>
+      <span class="particle particle-4"></span>
+      <span class="particle particle-5"></span>
+      <span class="particle particle-6"></span>
+    </div>
+
+    <!-- Success message -->
+    <h1 class="success-title">Order Confirmed!</h1>
+
+    <p class="success-message">
+      Thank you for your order. Your order has been placed successfully.
+    </p>
+
+    <p class="success-subtitle">
+      We are preparing your fresh products and will notify you when they are shipped.
+    </p>
+
+    <!-- Order details -->
+    <div class="order-info">
+
+      <div class="info-item">
+        <i class="fa-solid fa-receipt"></i>
+
+        <div>
+          <span>Order ID</span>
+          <strong>
+            {{ orderTrackingNumberValue || 'Confirmed' }}
+          </strong>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="fa-solid fa-calendar-days"></i>
+
+        <div>
+          <span>Order Date</span>
+          <strong>{{ orderDate | date:'dd MMM yyyy, hh:mm a' }}</strong>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="fa-solid fa-circle-check"></i>
+
+        <div>
+          <span>Payment Status</span>
+          <strong>Paid</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Order progress -->
+    <div class="order-progress">
+
+      <div class="progress-line"></div>
+
+      <div class="progress-step completed">
+        <div class="progress-icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+
+        <strong>Order Placed</strong>
+        <span>Successfully confirmed</span>
+      </div>
+
+      <div class="progress-step active">
+        <div class="progress-icon">
+          <i class="fa-solid fa-box"></i>
+        </div>
+
+        <strong>Processing</strong>
+        <span>Preparing your order</span>
+      </div>
+
+      <div class="progress-step">
+        <div class="progress-icon">3</div>
+
+        <strong>Out for Delivery</strong>
+        <span>Expected soon</span>
+      </div>
+
+      <div class="progress-step">
+        <div class="progress-icon">4</div>
+
+        <strong>Delivered</strong>
+        <span>Pending</span>
+      </div>
+
+    </div>
+
+    <!-- Farmer message -->
+    <div class="farmer-message">
+      <i class="fa-solid fa-seedling"></i>
+
+      <div>
+        <strong>Support our farmers & enjoy fresh, organic produce!</strong>
+
+        <p>
+          Your order helps local farmers grow and build a healthier future.
+        </p>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="success-actions">
+
+      <button
+        type="button"
+        class="continue-shopping"
+        (click)="continueShopping()"
+      >
+        <i class="fa-solid fa-bag-shopping"></i>
+        Continue Shopping
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <button
+        type="button"
+        class="view-orders"
+        (click)="goToOrders()"
+      >
+        <i class="fa-solid fa-receipt"></i>
+        View My Orders
+      </button>
+
+    </div>
+
+    <!-- Benefits -->
+    <div class="benefits">
+
+      <div>
+        <i class="fa-solid fa-leaf"></i>
+        <section>
+          <strong>100% Fresh & Organic</strong>
+          <span>Direct from trusted farmers</span>
+        </section>
+      </div>
+
+      <div>
+        <i class="fa-solid fa-truck-fast"></i>
+        <section>
+          <strong>Fast & Safe Delivery</strong>
+          <span>At your doorstep</span>
+        </section>
+      </div>
+
+      <div>
+        <i class="fa-solid fa-shield-halved"></i>
+        <section>
+          <strong>Secure Payments</strong>
+          <span>Your data is safe with us</span>
+        </section>
+      </div>
+
+    </div>
+
+  </section>
+}
+
+  <aside>
+    <div class="side-head">
+      <div class="in">
+        <div class="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <p>Order Summary</p>
+      </div>
+      <div class="out">
+        <p>{{cartItems.length}}Items</p>
+      </div>
+    </div>
+
+    <div class="all">
+    <ng-container *ngIf="currentStep==1||currentStep===2||currentStep===4">
+        @for (item of cartItems; track item.id) {
+      <div class="names">
+        <img [src]="item.image" [alt]="item.name" class="product-image" />
+
+        <div class="product-info">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+
+          <span class="organic-tag" *ngIf="item.organic">
+            Organic
+          </span>
+        </div>
+
+        <div class="price">
+          <strong>₹ {{ item.price.toFixed(2) }}</strong>
+          <small>{{ item.unit }}</small>
+        </div>
+
+
+      </div>
+      }
+    </ng-container>
+      <div class="tot">
+
+        <div class="sub">
+          <p>Subtotal({{cartItems.length}}items)</p>
+          <p>₹{{grandTotal.toFixed(2) }}</p>
+        </div>
+       <div class="del">
+  <p>Delivery Charges</p>
+
+  <p>
+    <ng-container *ngIf="subtotal >= 500; else deliveryCharge">
+      <del>₹40</del> ₹0
+    </ng-container>
+
+    <ng-template #deliveryCharge>
+      <strong>₹40</strong>
+    </ng-template>
+  </p>
+
+  <p>
+    {{ subtotal >= 500
+      ? 'Enjoy your savings!'
+      : 'Shop more, save more!' }}
+  </p>
+</div>
+<div class="col-3">
+  <p>Total Amount</p>
+  <p>₹{{grandTotal}}</p>
+</div>
+      </div>
+
+    </div>
+    <div class="delivery-note">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+          <h4>Free delivery on orders above ₹ 500</h4>
+          <p>Shop more save more!</p>
+        </div>
+      </div>
+      <div class="last-sec">
+         <ng-container *ngIf="currentStep==3">
+<div class="support-card">
+
+  <!-- Support heading -->
+  <div class="support-header">
+    <i class="fa-solid fa-headset support-icon"></i>
+
+    <div class="support-text">
+      <h4>Need Help?</h4>
+      <p>For any assistance, contact our support team.</p>
+    </div>
+  </div>
+
+  <!-- Contact information -->
+  <div class="contact-box">
+
+    <div class="contact-item">
+      <i class="fa-solid fa-phone"></i>
+      <span>+91 9581288259</span>
+    </div>
+
+    <div class="contact-item">
+      <i class="fa-solid fa-envelope"></i>
+      <span>support@farmconnect.com</span>
+    </div>
+
+    <div class="contact-item">
+      <i class="fa-regular fa-clock"></i>
+      <span>Mon - Sat, 9 AM - 6 PM</span>
+    </div>
+
+  </div>
+
+  <!-- Place Order button -->
+  <button class="place-order-btn" (click)="placeOrder()">
+    <i class="fa-solid fa-lock"></i>
+    <span>Place Order</span>
+    <i class="fa-solid fa-arrow-right"></i>
+  </button>
+
+</div>
+
+         </ng-container>
+
+
+      </div>
+  </aside>
+</main>

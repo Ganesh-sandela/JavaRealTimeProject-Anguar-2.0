@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav{
+    width: 100%;
+    height: 70px;
+    background-color: #2e7d32;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+}
+
+.nav h3{
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.links{
+    display: flex;
+    gap: 30px;
+}
+
+.links a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.links a:hover{
+    color: #ffd54f;
+}
+
+.symbols{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.symbols p:hover{
+    color: #ffd54f;
+}
+.active{
+    color: #ffd54f !important;
+    border-bottom: 2px solid #ffd54f;
+    padding-bottom: 4px;
+}
+
+.hovering div{
+  
+    
+    color: white;
+  
+}
+.hovering{
+    position:absolute;
+    left: 900px;
+      display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.searchbox{
+    position: relative;
+}
+
+#search{
+    position: absolute;
+    left: -10px;
+    top: 20px;
+
+    color: white;
+    /* background-color: white; */
+
+    width: 100px;
+    height: 40px;
+
+    visibility: hidden;
+
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.searchbox:hover #search{
+    visibility: visible;
+}
+
+.user{
+    position: relative;
+}
+#login {
+position: absolute;
+top: 30px;
+font-size: 16px;
+visibility: hidden;
+}
+.user:hover #login{
+    visibility: visible;
+}
+.cart{
+position: relative;
+
+}
+ #cart{
+position: absolute;
+top: 30px;
+font-size: 16px;
+visibility: hidden;
+}
+.cart:hover #cart{
+    visibility: visible;
+}

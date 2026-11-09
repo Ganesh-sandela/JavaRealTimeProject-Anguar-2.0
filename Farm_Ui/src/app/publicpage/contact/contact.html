@@ -1,0 +1,42 @@
+<div class="contactSec">
+
+
+    <div class="title">
+        <h1>Contact Us</h1>
+        <p>Have questions or just want to say hi? Drop us message.</p>
+    </div>
+
+    <div class="info">
+        <div class="content">
+            <h4>Customer Support</h4>
+            <p>Contact us at the email address below or fill out the contact form and we'll get back to you !</p>
+            <div class="mail">
+                <i class="fa-regular fa-envelope"></i>
+                <p>farm@gamil.com</p>
+            </div>
+        </div>
+
+<div class="formsec">
+   <form  [formGroup]="fromdata" (submit)="onSubmit()">
+  <label for="name">First and Last Name*</label>
+    <input type="text" id="name" formControlName="name">
+   <div class="error" *ngIf="fromdata.controls.name.invalid && fromdata.controls.name.touched">Name is required</div>
+
+    <label for="email">Email*</label>
+    <input type="email" id="email" formControlName="email">
+    <div class="error" *ngIf="fromdata.controls.email.invalid && fromdata.controls.email.touched">Email is required</div>
+
+
+    <label for="order">order number (if applicable)</label>
+    <input type="text" id="order" formControlName="ordernum">
+
+    <label for="help">How We Can Help *</label>
+   <textarea name="help" id="help" formControlName="help"></textarea>
+    <div  class="error" *ngIf="fromdata.controls.help.invalid && fromdata.controls.help.touched"> issue  is required</div>
+
+
+   <button type="submit">Submit</button>
+   </form>
+</div>
+    </div>
+</div>

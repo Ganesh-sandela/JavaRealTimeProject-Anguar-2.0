@@ -1,0 +1,47 @@
+<div class="nav">
+    <div>
+        <h3>Fresh Harvest</h3>
+    </div>
+    <div class="links">
+        <a [routerLink]="['home']" [routerLinkActive]="['active']">Home</a>
+        <a [routerLink]="['shop']" [routerLinkActive]="['active']">Shop</a>
+        <a [routerLink]="['about']" [routerLinkActive]="['active']">About Us</a>
+        <a [routerLink]="['contact']" [routerLinkActive]="['active']">Contact</a>
+    </div>
+
+    <div class="symbols">
+        <div class="searchbox">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <div id="search">
+                <p>search</p>
+            </div>
+        </div>
+        <div [routerLink]="['/login']" [routerLinkActive]="['active']" class="user">
+            <i class="fa-regular fa-user"></i>
+            <div id="login">
+                <p>login</p>
+            </div>
+        </div>
+        <div class="cart">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+            <div id="cart">
+                <p>cart</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hovering">
+        <!-- <div id="search">
+            <p>search</p>
+        </div>
+        <div>
+            <p>login/register</p>
+        </div>
+        <div>
+            <p>cart</p>
+        </div> -->
+
+    </div>
+
+</div>

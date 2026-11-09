@@ -1,0 +1,32 @@
+
+<div class="col2">
+<div class="sec2">
+    <div class="sec1">
+    <h1>We Value Your Feedback! ⭐</h1>
+    <p>Rate Your Experience</p>
+</div>
+
+    <div class="stars">
+    <i
+      *ngFor="let star of [1, 2, 3, 4, 5]"
+      class="fa-star"
+      [class.fa-solid]="star <= selectedRating"
+      [class.fa-regular]="star > selectedRating"
+      [class.selected]="star <= selectedRating"
+      (click)="selectRating(star)">
+    </i>
+  </div>
+ <div>
+  <p class="rating-text" *ngIf="selectedRating > 0">
+    You selected {{ selectedRating }} out of 5 stars.
+  </p>
+
+</div>
+<div>
+    <textarea name="" id="" placeholder="Awesome!!"></textarea>
+    <button> Submit Feedback</button>
+</div>
+
+
+</div>
+</div>

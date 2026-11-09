@@ -1,0 +1,219 @@
+<!-- <main>
+    <div class="head">
+
+       <div class="inner">
+         <div class="box">
+            <i class="fa-solid fa-box-archive"></i>
+        </div>
+        <div>
+            <h3>My Orders</h3>
+            <p>Track your orders and view order details.</p>
+
+        </div>
+       </div>
+
+        <div>
+            <img src="/Images/fruits.png"
+                alt="fruits">
+        </div>
+    </div>
+
+    <div class="orders-container">
+
+    <button class="close" (click)="onClick()">X</button>
+  <h2 class="title">Your Orders</h2>
+
+  <div  class="order-card" *ngFor="let ord of order$ | async" >
+
+   <div class="infoproduct" (click)="ProductInfo(ord)">
+   
+    <div class="order-img">
+      <img [src]="ord.image" alt="product">
+    </div>
+
+   
+    <div class="order-details">
+      <h3>{{ ord.name }}</h3>
+      <p class="price">₹{{ ord.price }}</p>
+      <p class="meta">Color: Black</p>
+    </div>
+   </div>
+
+    <div class="order-status">
+      <h3>OrderStatus:  <span [ngClass]="getStatus(ord.orderstatus)">{{ord.orderstatus | lowercase}}</span></h3>
+      <p class="delivered">
+        <button (click)="conformOrder(ord)" class="Conformbtn" *ngIf="ord.orderstatus=='created'">Conform Order</button>
+        <button (click)="cancelOrder(ord.id)" class="Cancelbtn" *ngIf="ord.orderstatus=='CONFIRMED'" >Cancel Order</button>
+        <span class="dot" *ngIf="ord.deliverydate!==null"></span>
+        <span *ngIf="deliveryDate(ord.deliverydate) as d">{{d}}</span>
+          <span  *ngIf="ord.deliverydate==null"> Please Conform Your Order</span>
+      </p>
+      <p class="msg">Your item has been delivered</p>
+      <span class="review">★ Rate & Review Product</span>
+    
+    </div>
+
+  </div>
+
+</div>
+</main> -->
+
+
+
+
+<main class="orders-page">
+
+  <!-- Page Header -->
+  <section class="orders-hero">
+    <div class="hero-content">
+      <div class="hero-icon">
+        <i class="fa-solid fa-box-open"></i>
+      </div>
+
+      <div>
+        <span class="eyebrow">YOUR FARM FRESH PURCHASES</span>
+        <h1>My Orders</h1>
+        <p>Track your deliveries and manage your purchases in one place.</p>
+      </div>
+    </div>
+
+    <img
+      class="hero-image"
+      src="/Images/fruits.png"
+      alt="Fresh fruits and vegetables">
+  </section>
+
+  <!-- Orders List -->
+  <section class="orders-container">
+
+    <div class="orders-heading">
+      <div>
+        <h2>Your orders</h2>
+        <p>Here's what's happening with your purchases.</p>
+      </div>
+
+      <button class="continue-btn" type="button" (click)="onClick()">
+        <i class="fa-solid fa-leaf"></i>
+        Continue shopping
+      </button>
+    </div>
+
+    <ng-container *ngIf="order$ | async as orders">
+
+      <!-- Empty State -->
+      <div class="empty-state" *ngIf="orders.length === 0">
+        <div class="empty-icon">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </div>
+        <h3>No orders yet</h3>
+        <p>Your farm-fresh favourites will appear here after you place an order.</p>
+        <button type="button" class="continue-btn" (click)="onClick()">
+          Explore products
+        </button>
+      </div>
+
+      <!-- Order Cards -->
+      <div class="order-list" *ngIf="orders.length > 0">
+
+        <article class="order-card" *ngFor="let ord of orders">
+
+          <div class="order-top">
+            <div class="order-reference">
+              <span class="order-label">ORDER ITEM</span>
+              <span class="order-number">#{{ ord.id }}</span>
+            </div>
+
+            <span class="status-badge" [ngClass]="getStatus(ord.orderstatus)">
+              <span class="status-dot"></span>
+              {{ ord.orderstatus || 'Pending' | titlecase }}
+            </span>
+          </div>
+
+          <div class="order-main">
+
+            <div class="product-image-wrap" (click)="ProductInfo(ord)">
+              <img
+                [src]="ord.image || 'assets/images/no-image.png'"
+                [alt]="ord.name || 'Product image'">
+            </div>
+
+            <div class="product-info" (click)="ProductInfo(ord)">
+              <span class="product-caption">FRESH FROM THE FARM</span>
+              <h3>{{ ord.name }}</h3>
+              <p class="product-quantity">
+                <i class="fa-solid fa-basket-shopping"></i>
+                Quantity: {{ ord.quantity }}
+              </p>
+              <p class="order-date" *ngIf="ord.dateCreated">
+                <i class="fa-regular fa-calendar"></i>
+                Ordered on {{ ord.dateCreated | date:'dd MMM yyyy' }}
+              </p>
+            </div>
+
+            <div class="product-price">
+              <span class="price-label">Order amount</span>
+              <strong>₹{{ ord.price | number:'1.2-2' }}</strong>
+            </div>
+
+          </div>
+
+          <div class="delivery-info" *ngIf="ord.deliverydate">
+            <i class="fa-solid fa-truck-fast"></i>
+            <span>{{ deliveryDate(ord.deliverydate) }}</span>
+          </div>
+
+          <div
+            class="delivery-info pending-info"
+            *ngIf="!ord.deliverydate && ord.orderstatus?.toLowerCase() === 'created'">
+            <i class="fa-regular fa-clock"></i>
+            <span>Awaiting order confirmation</span>
+          </div>
+
+          <div class="delivery-info cancelled-info"
+            *ngIf="ord.orderstatus?.toLowerCase() === 'cancelled'">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span>This order has been cancelled.</span>
+          </div>
+
+          <div class="order-footer">
+            <span class="footer-note">
+              <i class="fa-solid fa-shield-heart"></i>
+              Thank you for supporting local farmers
+            </span>
+
+            <div class="order-actions">
+
+              <button
+                type="button"
+                class="action-btn confirm-btn"
+                *ngIf="ord.orderstatus?.toLowerCase() === 'created'"
+                (click)="conformOrder(ord)">
+                <i class="fa-solid fa-check"></i>
+                Confirm order
+              </button>
+
+              <button
+                type="button"
+                class="action-btn cancel-btn"
+                *ngIf="ord.orderstatus === 'CONFIRMED'"
+                (click)="cancelOrder(ord.id)">
+                <i class="fa-solid fa-xmark"></i>
+                Cancel order
+              </button>
+
+              <span class="delivered-label"
+                *ngIf="ord.orderstatus?.toLowerCase() === 'delivered'">
+                <i class="fa-solid fa-circle-check"></i>
+                Delivered
+              </span>
+
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+    </ng-container>
+
+  </section>
+</main>

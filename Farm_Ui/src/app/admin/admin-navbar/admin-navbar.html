@@ -1,0 +1,29 @@
+<div class="navbar">
+
+    <div class="logo">
+        <img src="Images/farmlogo.png" alt="logo">
+    </div>
+
+    <div class="sec">
+        <div class="serachbar">
+            <input type="search" placeholder="Search anything...">
+        </div>
+        <div class="bell">
+            <i class="fa-regular fa-bell"></i>
+        </div>
+
+        <div class="icon">
+            <!-- <img *ngIf="'user.profileImage'" [src]="'user.profileImage'" class="avatar-img"> -->
+
+            <div *ngIf="'!user.profileImage'" class="avatar">
+                {{name| intials }}  
+            </div>
+            
+        </div>
+
+        <div class="name"> <h3>{{role |titlecase}}</h3></div>
+    </div>
+
+
+
+</div>

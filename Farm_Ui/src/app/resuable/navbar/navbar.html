@@ -1,0 +1,35 @@
+<div class="navbar">
+
+    <div class="logo">
+        <img src="Images/farmlogo.png" alt="logo">
+    </div>
+    <div class="appname">
+      <p>Welcome Back, <span>{{name}} 👋</span></p>
+     
+      <p id="cont">{{content}}</p>
+    </div>
+
+    <div class="sec">
+        <div class="serachbar">
+            <input type="search" placeholder="Search anything..." #txt (change)="search($event)">
+            <button (keypress)="search($event)">Search</button>
+        </div>
+        <div class="bell">
+            <i class="fa-regular fa-bell"></i>
+        </div>
+
+        <div class="icon">
+            <!-- <img *ngIf="'user.profileImage'" [src]="'user.profileImage'" class="avatar-img"> -->
+
+            <div *ngIf="'!user.profileImage'" class="avatar">
+                {{name| intials }}  
+            </div>
+            
+        </div>
+
+        <div class="name"> <h3>{{name |titlecase}}</h3></div>
+    </div>
+
+
+
+</div>

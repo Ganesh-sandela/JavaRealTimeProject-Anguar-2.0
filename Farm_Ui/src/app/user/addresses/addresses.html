@@ -1,0 +1,53 @@
+<main>
+
+  <aside>
+    <div class="icon">
+      <i class="fa-solid fa-location-dot"></i>
+    </div>
+
+    <div class="info">
+      <h4>My Addresses</h4>
+      <p>Manage your delivery addresses for a faster checkout experience</p>
+    </div>
+  </aside>
+
+  <section style="position: relative; top: 120px; ">
+
+    <section>
+  @for (item of address; track item.id) {
+
+   <div class="sec">
+     <h3>{{ name }}</h3>
+
+    <p>
+      <i class="fa-solid fa-phone"></i>
+      {{ mobile }}
+    </p>
+
+    <p>
+      <i class="fa-solid fa-location-dot"></i>
+      {{ item.houseno }}, {{ item.village }}, {{ item.city }}
+    </p>
+
+    <p>
+      {{ item.District }}, {{ item.state }} - {{ item.zipcode }}
+    </p>
+
+    <div class="btns">
+        <button (click)="edit()"> <i class="fa-solid fa-pen-to-square"></i>Edit</button>
+        <button (click)="Delete(item.id)"> <i class="fa-solid fa-trash"></i>Delete</button>
+    </div>
+   </div>
+  }
+
+  <div class="add">
+    <div class="plus"><i style="text-align: center;  margin-top: 15px;" class="fa-solid fa-plus"></i></div>
+    <h2 style="margin-left:20px ;">Add New Address</h2>
+    <p>save a new address for faster delivery</p>
+    <button [routerLink]="['/user/useraddaddress']" ><i class="fa-solid fa-plus"></i> Add Address</button>
+  </div>
+</section>
+
+  </section>
+
+</main>

@@ -1,0 +1,24 @@
+<div class="nav">
+    <div class="sec">
+        <i class="fa-solid fa-bars" (click)="openbar()"></i>
+        <p>Shop By Category</p>
+    </div>
+    <div class="pages">
+        <div> <a [routerLink]="['userhome']" [routerLinkActive]="['active']">Home</a></div>
+       <div>  <a [routerLink]="['/user/uservegetables', 1]" routerLinkActive="active">
+            Vegetables</a> </div>
+        <div> <a [routerLink]="['/user/userfruits',2]" [routerLinkActive]="['active']">Fruits</a></div>
+        <div> <a [routerLink]="['/user/userdairy',6]" [routerLinkActive]="['active']">Dairy</a></div>
+        <div> <a [routerLink]="['/user/usergrains',4]" [routerLinkActive]="['active']">Grains & Pulses</a></div>
+        <div> <a [routerLink]="['/user/userorganic',10]" [routerLinkActive]="['active']">Organic</a></div>
+        <div> <a [routerLink]="['/user/userflowers',8]" [routerLinkActive]="['active']">Flowers</a></div>
+        <div> <a [routerLink]="['/user/userseeds',9]" [routerLinkActive]="['active']">Seeds</a></div>
+        <div> <a [routerLink]="['/user/useroffers']" [routerLinkActive]="['active']">Offers</a></div>
+        <div> <a [routerLink]="['/user/cart']" [routerLinkActive]="['active']">Cart</a></div>
+    </div>
+
+    <div [ngClass]="toggelbar? 'openbar' : 'closebar'">
+        <app-side-menu></app-side-menu>
+    </div>
+
+</div>

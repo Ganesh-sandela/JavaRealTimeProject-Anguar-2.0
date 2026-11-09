@@ -1,0 +1,105 @@
+.main img:first-child{
+    height: 100%;
+    width: 100%;
+    max-height: 480px;
+    max-width: 1300px;
+    position: relative;
+    top: 130px;
+    left: 0px;
+}
+.popup{
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    max-height: 370px;
+    /* border:  2px solid red; */
+    position: absolute;
+    top: 140px;
+    background-color:white ;
+    border-radius: 10px;
+    left: 500px;
+
+  
+
+}
+.inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 0;
+    gap: 30px;
+   
+position: relative;
+top: -20px;
+
+}
+#an{
+    position: relative;
+    top: 0px;
+}
+.inner > img > p:nth-child(1){
+    font-weight: 600;
+
+}
+p{
+    margin-top: -20px;
+    padding-top: 20px;
+}
+.in{
+    text-align: center;
+    width: 200px;
+}
+.box{
+    position: absolute;
+    top:150px
+}
+.box p:first-child{
+font-weight: 600;
+text-align: center;
+font-size: 20px;
+
+}
+.btn{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+   height: 100%;
+   width: 100%;
+   max-height: 100px;
+    /* border: 2px solid red; */
+    margin-top: -30px;
+    color: white;
+}
+.btn button{
+    height: 100%;
+    width: 100%;
+    max-width: 200px;
+    max-height: 30px;
+    color: white;
+    background-color: #0e7f0e;
+    border-radius: 10px;
+     border: 2px solid rgb(14, 127, 14);
+    
+}
+.btn button:first-child:hover{
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    border: 2px solid rgb(14, 127, 14);
+}
+.btn button:last-child{
+    background-color: transparent;
+    color: black;
+  border: 2px solid rgb(14, 127, 14);
+  font-weight: 600;
+
+}
+.btn button:last-child:hover{
+color:white ;
+background-color: rgb(14, 127, 14);
+cursor: pointer;
+}

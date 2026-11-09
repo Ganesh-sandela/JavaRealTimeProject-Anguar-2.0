@@ -1,0 +1,156 @@
+<main>
+
+    <div class="sec1">
+        <li type="none">
+            <a routerLink="/help-support">
+                <i class="fa-solid fa-headset"></i>
+                <span>Help &amp; Support</span>
+            </a>
+        </li>
+        <p>we're here to help Find awseome ansers to common questions or get in touch with us</p>
+    </div>
+
+    <div class="col-2">
+        <!-- <div class="col-1-1">
+          <li type="none">
+            <a routerLink="/faq">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Frequently Asked Questions</span>
+            </a>
+        </li>
+      </div> -->
+
+        <!-- <div class="all">
+
+        <div class="ans-1">
+        <p>How can I track my order? </p>
+      </div>
+
+      <div class="ans-2">
+        <p>What are the delivery charges? </p>
+      </div>
+   
+      <div class="ans-1">
+        <p>Can I cancel my order? </p>
+      </div>
+
+        <div class="ans-1">
+        <p>How do I return a product? </p>
+      </div>
+
+        <div class="ans-1">
+        <p>What payment methods do you accept?</p>
+      </div>
+
+        <div class="ans-1">
+        <p>How can I change my delivery address? </p>
+      </div>
+      </div> -->
+
+
+
+
+
+        <div class="faq-section">
+
+            <div class="faq-heading">
+                <i class="fa-solid fa-circle-question"></i>
+                <div>
+                    <h3>Frequently Asked Questions</h3>
+                    <p>Find answers to common questions</p>
+                </div>
+            </div>
+
+            <div class="faq-list">
+
+                <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+
+                    <button type="button" class="faq-question" [attr.aria-expanded]="openFaqIndex === i"
+                        (click)="toggleFaq(i)">
+
+                        <span>{{ faq.question }}</span>
+
+                        <i class="fa-solid" [class.fa-chevron-down]="openFaqIndex !== i"
+                            [class.fa-chevron-up]="openFaqIndex === i">
+                        </i>
+
+                    </button>
+
+                    <div class="faq-answer" *ngIf="openFaqIndex === i">
+
+                        <p>{{ faq.answer }}</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="sec2">
+        <div class="col-1-2">
+            <li type="none">
+                <a routerLink="/help-support">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Contact Us</span>
+                </a>
+            </li>
+            <p id="c">if you need further assistance, feel free to reach out us.</p>
+        </div>
+
+        <div class="sec-2-2">
+
+            <div class="f1">
+                <i class="fa-solid fa-phone"></i>
+                <p style="font-weight: 600; ">Phone</p>
+                <p style="color: rgb(21, 144, 58); font-weight: 600;">+91 9581288259</p>
+                <p>(Mon- Sat,9 AM-6PM)</p>
+            </div>
+
+            <div class="f1">
+                <i class="fa-solid fa-envelope"></i>
+                <p style="font-weight: 600;">Email</p>
+                <p>support@farmconnect.com</p>
+                <p>we reply within 24 hours</p>
+            </div>
+
+            <div class="f1">
+                <i class="fa-solid fa-location-dot"></i>
+                <p style="font-weight: 600;" >Address</p>
+                <div class="b1">
+                    <p>Flat No 3-102 Sai Residency kukatpally, Hyderabad Telangana - 500072</p>
+                </div>
+            </div>
+
+            <div class="f1">
+                <i class="fa-solid fa-comments"></i>
+                <p style="font-weight: 600; " >Live Chat</p>
+                <p style="color: rgb(21, 144, 58); font-weight: 600;">Chat with us </p>
+                <p>(Mon- Sat,9 AM-6PM)</p>
+            </div>
+
+        </div>
+
+        <div class="col-33">
+            <div class="col4">
+                <i class="fa-solid fa-seedling"></i>
+                <div class="col-5">
+                    <h3>We value  your feedback!</h3>
+                    <p>Help us improve by sharing your experience</p>
+                </div>
+            </div>
+
+            <div class="btns">
+                <button [routerLink]="['/user/feedback']">Send Feedback <span id="arrow">&RightArrow;</span></button>
+            </div>
+        </div>
+    </div>
+
+
+
+</main>

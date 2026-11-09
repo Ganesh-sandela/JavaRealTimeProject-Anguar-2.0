@@ -1,0 +1,106 @@
+<main>
+  <section>
+    <div>
+      <h2>Add New Address</h2>
+      <p>Manage Your Dekivery address</p>
+    </div>
+
+    <div>
+      <p><----Back to addresses</p>
+    </div>
+  </section>
+
+  <article>
+    <form [formGroup]="address" (submit)="onSubmit()">
+
+      <div class="all">
+        <div class="input-box">
+          <label for="name">Full Name <span>*</span></label>
+          <div>
+            <i class="fa-solid fa-user"></i>
+            <input type="text" formControlName="name">
+          </div>
+
+        </div>
+
+        <div class="input-box">
+          <label for="ph">Phone Number <span>*</span></label>
+          <div>
+            <i class="fa-solid fa-phone"></i>
+            <input type="number" formControlName="phno">
+          </div>
+        </div>
+
+        <!-- <div class="input-box">
+         <label for="name">Adresses Line <span>*</span></label>
+        <input type="text" formControlName="addr">
+       </div> -->
+
+        <div class="input-box">
+          <label for="name">House No. <span>*</span></label>
+          <div>
+            <i class="fa-solid fa-house"></i>
+            <input type="text" formControlName="hno">
+
+          </div>
+
+        </div>
+
+        <div class="input-box">
+          <label for="name">Village<span>*</span></label>
+          <div>
+            <i class="fa-solid fa-house-chimney"></i>
+            <input type="text" formControlName="village">
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label for="name">City<span>*</span></label>
+          <div>
+            <i class="fa-solid fa-city"></i>
+            <input type="text" formControlName="city">
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label for="name">District <span>*</span></label>
+          <div>
+            <i class="fa-solid fa-map-location-dot"></i>
+            <input type="text" placeholder="Enter district" formControlName="distinct">
+          </div>
+
+        </div>
+        <div class="input-box">
+          <label for="name">State <span>*</span></label>
+          <div>
+            <select formControlName="state">
+              <option value="">--select--</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Andhra pradesh">adra pradesh</option>
+              <option value="kerala">kerala</option>S
+              
+              <option value="Maharastra">Maharashtra</option>
+              <option value="delhi">delhi</option>
+            </select>
+
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label for="name">ZipCode <span>*</span></label>
+          <div>
+            <i class="fa-solid fa-map-pin"></i>
+            <input type="number" formControlName="zipcode">
+
+          </div>
+        </div>
+
+      </div>
+     <div class="btn">
+       <button type="submit">Submit</button>
+     </div>
+    </form>
+  </article>
+
+
+</main>

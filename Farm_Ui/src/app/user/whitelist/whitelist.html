@@ -1,0 +1,108 @@
+<main>
+    <div class="side-bar">
+        <div class="info">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EXELo8khqkYVQCssoF14kXbZ0nGr54MF6YP6rZ-hfA&s=10"
+                alt="user">
+            <div class="name">
+                <p>Hello,</p>
+                <p>Sandela Ganesh</p>
+            </div>
+        </div>
+        <div class="infoall">
+            <div class="ord-col">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <p>MY ORDERS</p>
+                <p>></p>
+            </div>
+            <hr>
+            <div class="account-main">
+                <div class="account-col">
+                    <i class="fa-solid fa-user"></i>
+                    <p>ACCOUNT SETTING</p>
+                </div>
+                <div class="account-info">
+                    <div>
+                        <p>Profile Information</p>
+                    </div>
+                    <div>
+                        <p>Manage Addresses</p>
+                    </div>
+                    <div>
+                        <p>PAN Card Information</p>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div class="payments">
+                <div class="account-col">
+                    <i class="fa-solid fa-wallet"></i>
+                    <p>PAYMENTS</p>
+                </div>
+                <div class="account-info">
+                    <div>
+                        <p>Gift Catds</p>
+                    </div>
+                    <div>
+                        <p>saved UPI</p>
+                    </div>
+                    <div>
+                        <p>Saved Cards</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="my-stuff">
+                <div class="account-col">
+                    <i class="fa-solid fa-folder"></i>
+                    <p>MY STUFF</p>
+
+                </div>
+                <div class="account-info">
+                    <div>
+                        <p>My Coupons</p>
+                    </div>
+                    <div>
+                        <p>My Review & Rating</p>
+                    </div>
+                    <div>
+                        <p>All Notifications</p>
+                    </div>
+                    <div>
+                        <p>My WhishList</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="ord-col logout">
+            <i class="fa-solid fa-power-off"></i>
+            <p>LOGOUT</p>
+        </div>
+
+    </div>
+
+    <aside>
+        <div class="count">
+            <h2>My Wishlist(5)</h2>
+        </div>
+        <div class="sec">
+            @for (item of whitelist; track $index) {
+            <div class="all">
+                <img [src]="'data:image/webp;base64,' + item.product.image" alt="item">
+                <div class="inner">
+                    <p>{{item.product.name}}</p>
+                    <p>₹{{item.product.unitPrice}} <del>₹{{item.product.unitPrice*2}}</del></p>
+                </div>
+                 <button (click)=" removeFromWishlist(item)" class="delete-btn">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+           
+
+            }
+        </div>
+    </aside>
+</main>

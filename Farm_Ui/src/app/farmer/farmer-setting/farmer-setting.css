@@ -1,0 +1,191 @@
+.box1{
+
+    /* border:  2px solid red; */
+    height: 350px;
+    width: 250px;
+    position: absolute;
+    left: 30px;
+    box-shadow: 0px 0px 10px rgb(228, 226, 226);
+}
+.pic img{
+    height: 100px
+    ;
+    width: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 60px;
+    object-fit: cover;
+}
+.shape{
+    height: 70px;
+    width: 100%;
+    background-color: rgb(206, 234, 224);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 1000;
+    opacity:calc(#0e7f0e);
+}
+.name{
+    text-align:center;
+    margin-top:15px;
+    position: absolute;
+    top: 110px;
+    left: 20px;
+}
+
+.name h3{
+    margin:0;
+    font-size:24px;
+    color:#333;
+}
+
+.verified{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-top:10px;
+    color:#2E7D32;
+    font-weight:600;
+}
+
+.verified i{
+    font-size:18px;
+}
+
+.verified p{
+    margin:0;
+}
+
+.info{
+    position: absolute;
+    top: 200px;
+    left: 35px;
+    display: grid;
+   grid-template-rows: repeat(auto max(250pc 1fr));
+   gap: 20px
+
+    
+}
+.ph{
+
+}
+.email{
+
+
+}
+.loc{
+height: 100%;
+max-height: 60px;
+width: 100%;
+max-width: 240px; 
+/* border:  2px solid black; */
+
+}
+.cal{
+
+}
+span{
+    text-align: center;
+    padding-left: 10px;
+}
+.inn{
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    text-align: center;
+}
+
+.profile-info{
+border:  2px solid red;
+position: absolute;
+left: 300px;
+height: 100%;
+width: 100%;
+max-height: 500px;
+max-width: 700px;
+}
+
+.error{
+padding: 0%;
+   color: red;
+   top: 105px;
+   left: 30px;
+}
+.error p{
+    position: absolute;
+    margin-top: -0px;
+}
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+
+input.ng-touched.ng-valid {
+    border: 1px solid green;
+}
+
+.input-box{
+
+    display: flex;
+    flex-direction: column;
+
+}
+input{
+    width: 300px;
+    height: 30px;
+}
+.form-data{
+
+}
+.title{
+
+}
+.bar{
+    border: 1.5px solid green;
+    width: 100px;
+    position: absolute;
+    top: 52px;
+    left: 0px;
+}
+
+form{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+label{
+    font-weight: 700;
+}
+
+.save-btn{
+    background:#0e7f0e;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top: 10px;
+    border: 1px solid #2E7D32;
+}
+
+.save-btn i{
+    margin-right:8px;
+}
+.save-btn:hover{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+
+}
+.main{
+    position: relative;
+    left: -10px;
+    width: 600px;
+}
+.cal{
+    width: 240px;
+    /* border:  2px solid red; */
+}

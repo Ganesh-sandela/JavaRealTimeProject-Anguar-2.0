@@ -1,0 +1,18 @@
+
+
+<div class="main">
+    <div class="dash">
+        <div class="inner_dash"> <i class="fa-solid fa-gauge"></i> <a  [routerLink]="['/admindashboard']">Dashboard</a></div>
+
+    </div>
+
+    <div class="main2">
+        <p>MANAGEMENT</p>
+        <div class="routes">
+            <div [routerLink]="['/admin/adminusermngmt']"> <i class="fa-solid fa-users"></i> <a >Users</a> </div>
+            <div [routerLink]="['/admin/adminproductmngmt']"> <i class="fa-solid fa-box-open"></i> <a >Products</a></div>
+            <div [routerLink]="['/admin/adminordermngmt']"> <i class="fa-solid fa-cart-shopping"></i> <a >Orders</a></div>
+            <div [routerLink]="['/admin/admincategorymngmt']">	<i class="fa-solid fa-layer-group"></i> <a >Categories</a></div>
+        </div>
+    </div>
+</div>

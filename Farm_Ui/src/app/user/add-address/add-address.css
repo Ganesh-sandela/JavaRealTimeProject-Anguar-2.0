@@ -1,0 +1,91 @@
+article{
+    /* border: 2px solid red; */
+    box-shadow: 0px 5px 10px rgb(183, 186, 188);
+    position: relative;
+    left: 200px;
+    width: 100%;
+    height: 400px;
+    max-width: 900px;
+    max-height: 1200px;
+   margin-top: 50px;
+    overflow: hidden;
+}
+.all{
+    display: grid;
+    grid-template-columns: repeat(2,3fr);
+    gap: 20px;
+}label{
+    position: relative;
+    left: 40px;
+}
+/* Chrome, Edge, Safari */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+i{
+    position: relative;
+    left: 50px;
+    z-index: 100;
+
+}
+span{
+    color: red;
+}
+input,select{
+    padding-left: 40px;
+    height: 100%;
+    width: 100%;
+    max-width: 200px;
+    max-height: 80px !important;
+    
+}
+input{
+    position: relative;
+    left: 20px;
+    height: 40px;
+    max-width: 230px;
+    width: 100%;
+
+}
+select{
+    position: relative;
+    left: 40px;
+    height: 40px;
+    max-width: 260px;
+    width: 100%;
+
+}
+label{
+    font-style: italic;
+    font-weight: 600;
+}
+.btn{
+    align-items: center;
+    position: relative;
+    left: 300px;
+    top: 30px;
+}
+.btn button{
+    align-items: center;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(40, 149, 40);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn button:hover{
+    color: black;
+    background-color: transparent;
+
+}

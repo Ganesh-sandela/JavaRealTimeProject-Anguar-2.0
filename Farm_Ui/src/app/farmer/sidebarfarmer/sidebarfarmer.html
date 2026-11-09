@@ -1,0 +1,9 @@
+
+
+<div class="sec">
+    
+    @for (item of lists; track $index) {
+            <a [routerLink]="item.route" [routerLinkActive]="['active']">  <i [class]="item.i"></i> {{item.title}} </a>
+        
+    }
+</div>

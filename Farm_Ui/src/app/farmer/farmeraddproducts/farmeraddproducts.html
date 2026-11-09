@@ -1,0 +1,131 @@
+<div class="main">
+    <div class="haeding">
+        <h2>Add New Products</h2>
+        <p>Fill all the details to add the new product.</p>
+    </div>
+    <div class="datasec">
+        <form [formGroup]="items" (ngSubmit)="onSubmit()">
+
+            <div class="content">
+                <div class="input-box">
+                    <label for="pname">Product Name <span>*</span></label>
+                    <input type="text" placeholder="Enetr Product Name" id="pname" formControlName="name">
+                </div>
+
+                <div class="input-box">
+                    <label for="cname">Category <span>*</span></label>
+                    <select id="cname" formControlName="category">
+                        <option value="">Select Category</option>
+                        <option value="1">🥬 Vegetables</option>
+                        <option value="2">🍎 Fruits</option>
+                        <option value="3">🌾 Grains & Cereals</option>
+                        <option value="4">🥜 Pulses & Lentils</option>
+                        <option value="5">🌿 Herbs & Spices</option>
+                        <option value="6">🥛 Dairy Products</option>
+                        <option value="7">🥚 Eggs</option>
+                        <option value="8">🌼 Flowers</option>
+                        <option value="9">🌱 Seeds</option>
+                        <option value="10">🌳 Plants & Saplings</option>
+                        <option value="11">🍯 Organic Products</option>
+                        <option value="12">🧺 Dry Fruits & Nuts</option>
+                        <option value="13">🍄 Mushrooms</option>
+                        <option value="14">🐝 Honey</option>
+                        <option value="15">🐟 Fish & Seafood</option>
+                        <option value="16">🐔 Poultry</option>
+                        <option value="17">🧴 Oils</option>
+                        <option value="18">🧂 Masalas</option>
+                        <option value="19">📦 Others</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="price">Price(₹)<span>*</span></label>
+                    <input type="number" placeholder="Enter price" id="price" formControlName="price">
+                </div>
+                <div class="input-box">
+                    <label for="unit">Unit <span>*</span></label>
+                    <select id="unit" formControlName="unit">
+                        <option value="">Select Unit</option>
+                        <option value="kg">Kilogram (kg)</option>
+                        <option value="g">Gram (g)</option>
+                        <option value="quintal">Quintal</option>
+                        <option value="ton">Ton</option>
+                        <option value="litre">Litre (L)</option>
+                        <option value="ml">Millilitre (ml)</option>
+                        <option value="piece">Piece</option>
+                        <option value="dozen">Dozen</option>
+                        <option value="bunch">Bunch</option>
+                        <option value="packet">Packet</option>
+                        <option value="bag">Bag</option>
+                        <option value="box">Box</option>
+                        <option value="tray">Tray</option>
+                        <option value="bundle">Bundle</option>
+
+                    </select>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="stock">Stock Quantity<span>*</span></label>
+                    <input type="number" placeholder="Enter Quantity" id="stock" formControlName="stock">
+                </div>
+
+                <div class="input-box">
+                    <label>Harvest Date</label>
+                    <input type="date" formControlName="harvestDate">
+                </div>
+
+                <div class="input-box">
+                    <label>Organic Product</label>
+                    <select formControlName="organic">
+                        <option value="">Select</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label for="s">Status</label>
+                    <select id="s" formControlName="status">
+                        <option value="">--Select--</option>
+                        <option value="Available">Available</option>
+                        <option value="Out Of Stock">Out Of Stock</option>
+                    </select>
+                </div>
+
+                <div class="input-box">
+                    <label for="loc">Location </label>
+                    <input type="text" placeholder="vilage/city" formControlName="location">
+                </div>
+                <div class="input-box">
+                    <label for="desc">Description </label>
+                    <textarea formControlName="description" placeholder="Enter Product Description"
+                        id="desc"></textarea>
+                </div>
+            </div>
+            <div class="boxing">
+                <div class="fileing" (click)="infile.click()">
+                    <input type="file" id="infile" #infile multiple accept="image/*" (change)="selectedfile($event)"
+                        hidden>
+
+                    <div class="upload-content">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Click to upload images</p>
+                    </div>
+                </div>
+                <div class="preview-imagecontainer">
+                    <div class="preview-card" *ngFor="let images of previewfiles,let i=index">
+                        <img [src]="images " alt="preview">
+
+                        <button type="button" (click)="removeImage(i)">✖</button>
+                    </div>
+                </div>
+
+                <div class="btns">
+                    <button type="submit">Cancel</button>
+                    <button type="submit">Save Product</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+<div class="main">
+
+    <div class="sec">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu59YkvPCDfeg23coCeBP3TJDvYlar5IbrsC0fvxf4gA&s=10"
+            alt="farmer">
+    </div>
+    <h1>Register here!.</h1>
+
+
+    <form [formGroup]="register" (ngSubmit)="OnSubmit()">
+        <div class="error" *ngIf="register.get('email')?.hasError('EmailNotUnique')">already have an account?</div>
+
+        <div class="head">
+            <div class="inputbox">
+                <label for="name">Name:</label>
+                <input type="text" id="name" formControlName="name">
+
+                <div class="error">
+                    <p *ngIf="register.controls['name'].errors?.['required'] && register.controls['name'].touched"> This
+                        filed is
+                        required</p>
+                    <p *ngIf="register.controls['name'].errors?.['minLength'] && register.controls['name'].touched"> Min
+                        length >
+                        3</p>
+                </div>
+            </div>
+
+            <div class="inputbox">
+                <label for="email">Email:</label>
+                <input type="email" id="email" formControlName="email">
+
+                <div class="error">
+                    <p *ngIf="register.controls['email'].errors?.['required'] && register.controls['email'].touched">
+                        This field
+                        is required</p>
+
+                    <p *ngIf="register.controls['email'].invalid && register.controls['email'].touched"> Ph no should be
+                        0 - 9</p>
+                </div>
+            </div>
+
+            <div class="inputbox">
+                <label for="phno">Phone No:</label>
+
+                <input type="text" id="phno" formControlName="phno">
+
+                <div class="error" id="phno">
+                    <p *ngIf="register.controls ['phno'].errors?.['required']
+        && register.controls['phno'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['phno'].errors?.['pattern']
+        && register.controls['phno'].invalid">
+                        Invalid Phone Number
+                    </p>
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="inputbox">
+                <label for="role">Role :</label>
+                <select name="role" id="role" formControlName="role">
+                    <option value="">--Select--</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Farmer">Farmer</option>
+                    <option value="Customer">Customer</option>
+                </select>
+                <div class="error">
+                    <p *ngIf="register.controls ['role'].errors?.['required'] && register.controls ['role'].touched">
+                        This field is
+                        required</p>
+                    <p *ngIf="register.controls ['role'].invalid && register.controls ['role'].touched"> This field is
+                        mandatory</p>
+                </div>
+            </div>
+
+             <div class="inputbox">
+                <label for="village">Village :</label>
+
+                <input type="text" id="village" formControlName="village">
+
+                <div class="error" id="city">
+                    <p *ngIf="register.controls ['village'].errors?.['required']
+        && register.controls['village'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['village'].touched
+        && register.controls['village'].invalid">
+                        THis Field Mandatory***
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="inputbox">
+                <label for="city">City :</label>
+
+                <input type="text" id="city" formControlName="city">
+
+                <div class="error" id="city">
+                    <p *ngIf="register.controls ['city'].errors?.['required']
+        && register.controls['city'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['city'].touched
+        && register.controls['city'].invalid">
+                        THis Field Mandatory***
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="inputbox">
+                <label for="city">District :</label>
+
+                <input type="text" id="district" formControlName="district">
+
+                <div class="error" id="district">
+                    <p *ngIf="register.controls ['district'].errors?.['required']
+        && register.controls['district'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['district'].touched
+        && register.controls['district'].invalid">
+                        Invalid district
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="inputbox">
+                <label for="state">State :</label>
+                <input type="text" id="state" formControlName="state">
+                <div class="error" id="city">
+                    <p *ngIf="register.controls ['state'].errors?.['required']
+        && register.controls['state'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['state'].touched
+        && register.controls['state'].invalid ">
+                        THis Field Mandatory***
+                    </p>
+                </div>
+            </div>
+
+             <div class="inputbox">
+                <label for="zipcode">zipcode :</label>
+                <input type="number" id="zipcode" formControlName="zipcode">
+                <div class="error" id="zipcode">
+                    <p *ngIf="register.controls ['zipcode'].errors?.['required']
+        && register.controls['zipcode'].touched"> This field is required </p>
+                    <p *ngIf="register.controls['zipcode'].touched
+        && register.controls['zipcode'].invalid ">
+                        THis Field Mandatory***
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- <div class="inputbox">
+                <label for="pwd">Password :</label>
+                <input type="password" name="pwd" id="pwd" formControlName="pwd">
+
+                <div class="error">
+                    <p *ngIf="register.controls['pwd'].errors?.['required'] && register.controls['pwd'].touched">This
+                        Field is required</p>
+                    <p *ngIf="register.controls['pwd'].errors?.['minlength'] && register.controls['pwd'].touched">Min
+                        length required</p>
+                </div>
+            </div>
+            <div class="inputbox">
+                <label for="cpwd">Confirm Password:</label>
+
+                <input type="password" id="cpwd" formControlName="cpwd">
+                <div class="error">
+                    <p *ngIf="register.controls['cpwd'].errors?.['required'] && register.controls['cpwd'].touched">
+                        Confirm Password is required </p>
+                    <p
+                        *ngIf=" register.get('pwd')?.value !== register.get('cpwd')?.value && register.controls['cpwd'].touched">
+                        Passwords do not match </p>
+                    <p *ngIf="mismatchespwd"> Conform Password mismatches</p>
+                </div>
+            </div>
+ -->
+            <p class="resetLink"><b>To Reset password page <a [routerLink]="['/reset']">ResetPwd ?</a></b></p>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+<div class="overlay" *ngIf="loading">
+    <div class="flower-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

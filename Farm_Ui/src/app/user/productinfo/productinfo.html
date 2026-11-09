@@ -1,0 +1,190 @@
+
+<div class="product-page">
+
+  <!-- Top navigation -->
+  <header class="product-navbar">
+    <div class="brand">
+      <span class="brand-icon">🌿</span>
+      <div>
+        <h2>FarmConnect</h2>
+        <p>Fresh from our farms</p>
+      </div>
+    </div>
+
+    <button class="back-button" (click)="goToOrders()">
+      <span>←</span> Back to My Orders
+    </button>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span>Home</span>
+    <span>/</span>
+    <span>My Orders</span>
+    <span>/</span>
+    <strong>Product Details</strong>
+  </div>
+
+  <!-- Product details -->
+  <main class="product-wrapper" *ngIf="product as p">
+
+    <section class="product-card">
+
+      <!-- Image section -->
+      <div class="product-visual">
+        <div class="fresh-badge">🌱 Farm Fresh</div>
+
+        <div class="image-frame">
+          <img
+            [src]="productImage"
+            [alt]="productName"
+            (error)="
+              $any($event.target).src =
+              'https://placehold.co/600x500/f0f7e9/36763a?text=Farm+Fresh'
+            "
+          />
+        </div>
+
+        <div class="image-caption">
+          <span>✓</span> Freshness you can trust
+        </div>
+      </div>
+
+      <!-- Information section -->
+      <div class="product-information">
+
+        <div class="product-topline">
+          <span class="category-label">FRESH FARM PRODUCE</span>
+
+          <span class="status-badge" [ngClass]="statusClass">
+            <span class="status-dot"></span>
+            {{ orderStatus }}
+          </span>
+        </div>
+
+        <h1>{{ productName }}</h1>
+
+        <p class="product-description">
+          Carefully selected farm produce, delivered with care from our
+          farming community to your doorstep.
+        </p>
+
+        <div class="price-section">
+          <div>
+            <span class="price-label">Price per unit</span>
+            <div class="price">
+              ₹{{ productPrice | number:'1.2-2' }}
+            </div>
+          </div>
+
+          <div class="quantity-box">
+            <span>Quantity</span>
+            <strong>{{ quantity }}</strong>
+          </div>
+        </div>
+
+        <div class="detail-divider"></div>
+
+        <h3 class="section-heading">Order information</h3>
+
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-icon">📦</span>
+            <div class="info-text">
+              <span>Quantity ordered</span>
+              <strong>{{ quantity }} unit(s)</strong>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <span class="info-icon">🚚</span>
+            <div class="info-text">
+              <span>Delivery status</span>
+              <strong>{{ orderStatus }}</strong>
+            </div>
+          </div>
+
+          <div class="info-row" *ngIf="p.orderId || p.id">
+            <span class="info-icon">🧾</span>
+            <div class="info-text">
+              <span>Order reference</span>
+              <strong>#{{ p.orderId || p.id }}</strong>
+            </div>
+          </div>
+
+          <div class="info-row" *ngIf="p.orderDate || p.createdAt">
+            <span class="info-icon">📅</span>
+            <div class="info-text">
+              <span>Order date</span>
+              <strong>
+                {{ (p.orderDate || p.createdAt) | date:'mediumDate' }}
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="total-panel">
+          <div>
+            <span>Estimated item total</span>
+            <small>{{ quantity }} × ₹{{ productPrice | number:'1.2-2' }}</small>
+          </div>
+
+          <strong>₹{{ productPrice * quantity | number:'1.2-2' }}</strong>
+        </div>
+
+        <button class="orders-button" (click)="goToOrders()">
+          <span>←</span> Return to My Orders
+        </button>
+
+        <p class="support-note">
+          🌿 Supporting farmers, delivering freshness.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+      <div class="benefit-item">
+        <span class="benefit-icon">🌱</span>
+        <div>
+          <h3>Farm Fresh</h3>
+          <p>Fresh produce from local farms</p>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="benefit-icon">🚚</span>
+        <div>
+          <h3>Careful Delivery</h3>
+          <p>Handled with care at every step</p>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="benefit-icon">🤝</span>
+        <div>
+          <h3>Farmer Support</h3>
+          <p>Connecting growers and customers</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Empty state -->
+  <section class="empty-state" *ngIf="!product">
+    <div class="empty-icon">🧺</div>
+    <h2>No product selected</h2>
+    <p>Please open a product from your orders to view its details.</p>
+    <button class="orders-button" (click)="goToOrders()">
+      View My Orders
+    </button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="product-footer">
+    <p>© FarmConnect · Fresh food, stronger farming communities.</p>
+  </footer>
+
+</div>

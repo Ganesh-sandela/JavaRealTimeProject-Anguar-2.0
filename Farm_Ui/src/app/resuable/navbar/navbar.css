@@ -1,0 +1,120 @@
+body {
+    padding: 0;
+    margin: 0;
+
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #3f51b5;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logo img {
+    height: 80px;
+    width: 200px;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+     align-self: flex-start;
+      position: fixed;
+    z-index: 99999; position: fixed;
+    z-index: 99999;
+     
+}
+
+.sec {
+    position: relative;
+    left: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.name {
+    margin-left: -15px;
+}
+
+.serachbar {
+    height: 100%;
+    width: 100%;
+    max-height: 50px;
+    min-width: 350px;
+    max-width: 400px;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+button{
+    height: 30px;
+    width: 90px;
+    color: white;
+    background-color: #3f51b5;
+    border-radius: 10px;
+}
+button:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+
+
+.bell {
+    font-size: 25px;
+}
+
+.serachbar input {
+    height: 100%;
+    width: 100%;
+    /* min-width: 200px; */
+    max-width: 230px;
+    
+    min-height: 40px;
+    max-height: 60px;
+
+    border-radius: 10px;
+    border-color: black;
+}
+
+input:focus {
+    outline: none;
+}
+.appname{
+    display: flex;
+  margin-left: -300px;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: -10px;
+  /* border:  2px solid red; */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.appname span{
+  font-weight: 700 !important;
+  font-size: 25px !important;
+
+}
+#cont{
+    position: absolute;
+    top: 40px;
+}

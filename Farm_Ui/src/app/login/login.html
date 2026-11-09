@@ -1,0 +1,100 @@
+<section>
+    <div class="title">
+        <h1>Welcome</h1>
+        <p>We are glad to see you back with us</p>
+    </div>
+    <form [formGroup]="login" (ngSubmit)="onSubmit()">
+
+        <div class="inputbox">
+            <!-- <input type="text" list="roles" formControlName="role">
+            <datalist id="roles">
+                <option value="">Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Customer">Customer</option>
+                <option value="Farmer">Farmer</option>
+            </datalist> -->
+            <select name="role" id="role" formControlName="role">
+                <option value="">--Select Role--</option>
+                <option value="Admin">Admin</option>
+                <option value="Customer">Customer</option>
+                <option value="Farmer">Farmer</option>
+            </select>
+            <div class="error"
+                *ngIf="login.controls.role.touched || submited && login.controls.role.errors?.['required']">
+                <p> Role is required</p>
+            </div>
+        </div>
+
+        <div class="inputbox">
+            <input type="email" formControlName="email" id="email">
+            <label for="email">Email :</label>
+            <div class="error">
+                <p *ngIf="login.controls.email.errors?.['required'] &&
+            (login.controls.email.touched || submited)">
+                    Email is required
+                </p>
+
+                <p *ngIf="login.controls.email.errors?.['email'] &&
+            (login.controls.email.touched || submited)">
+                    Please enter a valid email
+                </p>
+            </div>
+        </div>
+
+
+        <div class="inputbox">
+            <input type="password" formControlName="pwd" id="pwd" >
+            <label for="pwd">password :</label>
+            <div class="error">
+                <p *ngIf="login.controls.pwd.invalid &&(login.controls.pwd.touched ||submited )">This field is Inavlid
+                </p>
+                <p *ngIf="login.controls.pwd.errors?.['required'] &&(login.controls.pwd.touched ||submited )">This field
+                    is required</p>
+            </div>
+        </div>
+
+
+        <button [disabled]="login.invalid" type="submit">NEXT</button>
+        <p class="info"><b>Login</b> With Others <b>Or</b> <a [routerLink]="['/reset']" >ResetPwd ?</a> </p>
+        <div class="google" (click)="loginWithGoogle()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1iQY-eq57eJu8wDzsAvmPcYz2eHFXgxRsgYqR0ojp6A&s"
+                alt="google">
+            <p id="g1">Login With <b id="g2">Google</b></p>
+        </div>
+        <div class="reg">
+            <a>Don't have an account</a><a [routerLink]="['/register']">Register</a>
+        </div>
+
+    </form>
+
+
+    <div class="picture" >
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSuLoCsYGQGlMVqqQJe1saHO_r5MqN2IJp3ETK06_ubZmrW61XgwB5Auzc&s=10"
+            alt="image">
+    </div>
+</section>
+
+<div class="dialog-overlay" *ngIf="showDialog">
+  <div class="dialog-box">
+
+    <h2>Error</h2>
+
+    <p>{{ dialogMessage }}</p>
+
+    <button (click)="closeDialog()">OK</button>
+
+  </div>
+</div>
+<!-- 
+<div class="overlay" *ngIf="loading">
+  <div class="flower-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div> -->

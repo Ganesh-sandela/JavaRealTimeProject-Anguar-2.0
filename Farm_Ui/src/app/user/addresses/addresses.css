@@ -1,0 +1,119 @@
+main{
+    position: relative;
+    top: 100px;
+    left: 280px;
+    overflow-x: hidden;
+    width: 980px;
+    /* border:  2px solid red; */
+}
+aside{
+    /* border:  2px solid red; */
+    display:  flex ;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    top: 125px;
+    width: 990px;
+    border-radius: 8px;
+    z-index: 1000;
+    height: 60px;
+    /* background-color: white; */
+background-color: #ffffff;
+}
+aside .fa-location-dot{
+    font-size: 30px;
+    color: rgb(28, 139, 28);
+}
+.info{
+    margin: 0%;
+    padding-bottom: 0%;
+    margin-top: 10px;
+
+}
+.info p{
+    position: relative;
+    top: -15px;
+}
+.sec{
+border:  1.5px solid rgb(28, 139, 28);
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 25px;
+    max-width: fit-content;
+    max-height: fit-content;
+}
+.btns .fa-solid:hover{
+    /* color: rgb(28, 139, 28); */
+}
+.btns button{
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+   
+     background-color: rgb(28, 139, 28);
+    color: white;
+
+    cursor: pointer;
+    display: flex;
+}
+.btns button:hover{
+    background-color: white;
+    color: black;
+}
+.add{
+ border:  1.5px solid rgb(28, 139, 28);
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+    padding-left: 25px;
+}
+.plus{
+    border-radius: 50%;
+    background-color: rgb(28, 139, 28);
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    position: relative;
+    top: 20px;
+    left: 100px;
+}
+.add button{
+    height: 35px;
+    width: 150px;
+    position: relative;
+    left: 40px;
+    background-color: rgb(42, 160, 42);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+
+}
+.add button:hover{
+    color: black;
+    background-color: white;
+}
+section {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    row-gap: 70px;
+
+  
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    min-height: 400px;
+}
+section > div {
+    width: 170px;
+    flex: 0 0 170px;
+    box-sizing: border-box;
+}
+.btns{
+    display: flex;
+}

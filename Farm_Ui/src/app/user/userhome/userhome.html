@@ -1,0 +1,145 @@
+<!-- <div class="imag-sec">
+    <div class="sec1">
+        <div class="inner-sec1">
+            <h2>Fresh From Farms</h2>
+            <h2>Healthy For You!</h2>
+         <div class="info">
+            <p>Get the freshest fruits,vegetables,dairy & more directly from  our trusted farmers</p>
+         </div>
+        <button>Shop Now</button>
+        </div>
+
+    </div>
+</div> -->
+
+<div class="arrows">
+  <button class="slider-btn left" (click)="scrollleft()">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
+  <button class="slider-btn right" (click)="scrollright()">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+<div class="sec-scroll" #secscroll>
+  <div class="banner">
+    <img src="Images/farm-banner1.png" alt="Banner">
+
+    <div class="banner-content">
+      <h1>Fresh From Farms,<br> <br> <span>Healthy For You!</span></h1>
+      <p>Get the freshest fruits, vegetables, dairy & more.</p>
+      <button>Shop Now</button>
+    </div>
+
+    <div class="fade-overlay"></div>
+  </div>
+
+  <div class="banner1">
+    <img src="Images/farm-banner2.png" alt="banner2">
+
+    <div class="banner-content1">
+      <h1>Farm Fresh,<br> <br> <span>Delivered To Your Door!</span></h1>
+      <p>Enjoy fresh vegetables, juicy fruits, dairy products, and more directly from local farmers.</p>
+      <button>Shop Now</button>
+    </div>
+    <div class="fade-overlay1"></div>
+  </div>
+
+  <div class="banner1">
+    <img src="Images/farm-banner3.png" alt="banner3">
+    <div class="banner-content1">
+      <h1>Eat Healthy,<br> <br> <span>Live Better!</span></h1>
+      <p>Discover naturally grown produce, packed with freshness and delivered with care.</p>
+      <button>Explore Products</button>
+    </div>
+    <div class="fade-overlay1"></div>
+  </div>
+
+  <div class="banner1">
+    <img src="Images/farm-banner4.png" alt="banner4">
+    <div class="banner-content1">
+      <h1>From Farmers,<br> <br> <span>Straight To Your Table!</span></h1>
+      <p>Support local farmers while enjoying premium-quality fruits, vegetables, grains, and dairy.</p>
+      <button>Start Shopping</button>
+    </div>
+    <div class="fade-overlay1"></div>
+  </div>
+
+
+  <div class="banner1">
+    <img src="Images/farm-banner5.png" alt="banner5">
+    <div class="banner-content1">
+      <h1>Bringing Farms,<br> <br> <span>Closer To Your Home!</span></h1>
+      <p>Shop fresh, organic, and locally sourced products for a healthier and happier lifestyle.</p>
+      <button>Order Now</button>
+    </div>
+    <div class="fade-overlay1"></div>
+  </div>
+
+  <div class="banner1">
+    <img src="Images/farm-banner6.png" alt="banner6">
+    <div class="banner-content1">
+      <h1>Nature's Best,<br> <br> <span>Fresh Every Day!</span></h1>
+      <p>Experience the taste of fresh harvests with affordable prices and doorstep delivery.</p>
+      <button>Browse Now</button>
+    </div>
+    <div class="fade-overlay1"></div>
+  </div>
+</div>
+
+<div class="sec2">
+
+  <div class="title">
+    <p>Shop by category</p>
+    <p>View All &RightArrowBar;</p>
+  </div>
+
+<div class="allitems">
+
+  <div [routerLink]="['/user/uservegetables', 1]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1_AHBVykz-OblM6Ehcn48hxC1Oy1uaWZhK4DIlp2CYQ&s=10" alt="Vegetables">
+    <p>Vegetables</p>
+  </div>
+
+  <div [routerLink]="['/user/userfruits',2]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ4bkTdxds-aRfGF5KF5Qq-0m7D-AkMV8TAE1HQ8x-Rg&s=10" alt="Fruits">
+    <p>Fruits</p>
+  </div>
+
+  <div [routerLink]="['/user/usergrains',4]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFPsZ3IIOEdgMwDUM-3fBL2s0Qsc29TAaAfxeh_Y9ObQ&s=10" alt="Grains">
+    <p>Grains & Cereals</p>
+  </div>
+
+  <div [routerLink]="['/user/usergrains',4]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9LW0FmiHvnkAT_niFf2RLKjVKEHzXMGFhFjHhtW7dKw&s=10" alt="Pulses">
+    <p>Pulses & Lentils</p>
+  </div>
+
+  <div [routerLink]="['/user/userdairy',6]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa4dUl5pL8c8-jx9r09SLc-S1U-NZ_q9l3xfSi9otgbw&s=10" alt="Dairy">
+    <p>Dairy Products</p>
+  </div>
+
+  <div [routerLink]="['/user/userorganic',10]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdoXGjgTQcp7vvSDEyYfxRMR1iBWwDMLe7kRbFK1JKQ&s=10" alt="Organic">
+    <p>Organic Products</p>
+  </div>
+
+  <div [routerLink]="['/user/userflowers',8]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTCu7_tg1a9ijpiRiiySdk7GtGFOwq2WzomPoHGkhtzQ&s=10" alt="Flowers">
+    <p>Flowers</p>
+  </div>
+
+  <div [routerLink]="['/user/userseeds',9]" class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAvChMeVj8VZ3m4h-Rpbv9SQpcCAZrAsM6Z66EOnN4rQ&s=10" alt="Seeds">
+    <p>Seeds</p>
+  </div>
+
+  <div class="item">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MArA5FsyFWCPVC3ZZfi3nKlKGmFc_q-TYw7FzUWNyg&s=10" alt="Others">
+    <p>Others</p>
+  </div>
+
+</div>

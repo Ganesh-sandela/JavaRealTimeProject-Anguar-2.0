@@ -1,0 +1,10 @@
+
+<main>
+   @for (item of items; track $index) {
+   
+        <a [routerLink]="item.route" [routerLinkActive]="['active']">
+            <i [class]="item.icon"></i> {{item.title}}
+        </a>
+  
+   }
+</main>
